@@ -43,7 +43,7 @@ Route::post('/createkeuangan', [KeuanganController::class, 'store'])->middleware
 Route::put('/keuangan/{keuangan}/update', [KeuanganController::class, 'update'])->middleware('auth');
 Route::get('/keuangan/{keuangan}/edit', [KeuanganController::class, 'edit'])->middleware('auth');
 Route::get('/beranda', [BerandaController::class, 'index'])->middleware('auth');
-Route::get('/tambahuser', [TambahUserController::class, 'index']);
-Route::get('/users', [TambahUserController::class, 'getUsers']);
-Route::post('/tambahuser', [TambahUserController::class, 'store']);
+Route::get('/tambahuser', [TambahUserController::class, 'index'])->middleware('auth');
+Route::get('/users', [TambahUserController::class, 'getUsers'])->middleware('auth');
+Route::post('/tambahuser', [TambahUserController::class, 'store'])->middleware('auth');
 Route::delete('user/{user}', [TambahUserController::class, 'destroy'])->middleware('auth');

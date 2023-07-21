@@ -15,7 +15,7 @@
 
     <div class="table-responsive container-fluid col-8 ">
         @can('admin')
-            <a href="/createkeuangan" class="btn btn-info mb-3">Tambah Data Keuangan</a>
+            <a href="/createkeuangan" class="btn btn-info mb-3 text-white">Tambah Data Keuangan</a>
         @endcan
         <table class="table table-striped table-sm">
             <thead>

@@ -18,7 +18,7 @@
 
   <div class="table-responsive container-fluid col-8 ">
     @can('admin')
-    <a href="/tambahuser" class="btn btn-info mb-3">Tambah User</a>
+    <a href="/tambahuser" class="btn btn-info mb-3 text-white">Tambah User</a>
     @endcan
     <table class="table table-striped table-sm">
       <thead>
@@ -27,10 +27,6 @@
           <th scope="col">Username</th>
           <th scope="col">Role</th>
           <th scope="col">Action</th>
-          {{-- @can('admin')
-          <th scope="col">Action</th>
-          @endcan --}}
-
         </tr>
       </thead>
       <tbody>
