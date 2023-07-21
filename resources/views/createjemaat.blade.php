@@ -54,8 +54,9 @@
           @enderror
         </div>
         
-        
-        <button type="submit" class="btn btn-info">Submit</button>
+        <div class="d-flex justify-content-end w-100">
+          <button type="submit" class="btn btn-success text-white">Submit</button>
+      </div>
       </form>
     </div>
 @endsection

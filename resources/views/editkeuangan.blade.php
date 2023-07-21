@@ -39,8 +39,9 @@
           </div>
           
         
-        
-        <button type="submit" class="btn btn-info">Submit</button>
+          <div class="d-flex justify-content-center w-100">
+            <button type="submit" class="btn btn-success text-white">Submit</button>
+        </div>
       </form>
     </div>
 @endsection

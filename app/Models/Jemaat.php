@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Jemaat extends Model
 {
     use HasFactory;
-    protected $guarded = ['id'];  
-    public function kepel() {
+    protected $guarded = ['id'];
+    public function kepel()
+    {
         return $this->belongsTo(Kepel::class);
     }
 }
