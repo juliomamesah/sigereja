@@ -22,11 +22,12 @@
           
         </div>
         <div class="mb-4">
-            <input type="text" name="role" class="form-control" id="role" required placeholder="Role" required value="{{ old ('username') }}">
-            
+          <select class="form-control" name="role" id="role" required>
+            <option value="" disabled selected>Pilih role</option>
+            <option value="admin">admin</option>
+            <option value="regular">regular</option>
+          </select>
           </div>
-        
-    
         
         <button type="submit" class="btn btn-info">Submit</button>
       </form>

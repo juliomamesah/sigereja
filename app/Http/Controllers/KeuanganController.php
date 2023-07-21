@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Keuangan;
-use App\Models\User;
-use Symfony\Component\Console\Output\ConsoleOutput;
+use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Carbon\Carbon;
 
 class KeuanganController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $data = Keuangan::with('user')->get()->toArray();
 
@@ -40,13 +39,33 @@ class KeuanganController extends Controller
             array_push($arr, $item);
         }
 
-        $go = collect($arr);
+        for ($i = 0; $i < count($arr); $i++) {
+            $arr[$i]['index'] = $i + 1;
+        }
 
-        
+        $go = $arr;
+
+        $total = count($go);
+        $per_page = 5;
+        $current_page = $request->input("page") ?? 1;
+
+        $starting_point = ($current_page * $per_page) - $per_page;
+
+        $go = array_slice($go, $starting_point, $per_page, true);
+
+
+        $go = new Paginator($go, $total, $per_page, $current_page, [
+            'path' => $request->url(),
+            'query' => $request->query(),
+        ]);
+
+        // dd($go);
         return view('keuangan', [
             "title" => "Keuangan",
-            "keuangans" => $go, 
-            
+            "keuangans" => $go,
+            "totalPage" => $go->lastPage(),
+            "currentPage" => $current_page,
+            "perPage" => $per_page
         ]);
     }
 
@@ -62,15 +81,16 @@ class KeuanganController extends Controller
         Keuangan::create($validatedData);
 
         return redirect('/keuangan')->with('success', 'Data berhasil ditambahkan');
-
-        
     }
-    public function create () {
+
+    public function create()
+    {
 
         return view('createkeuangan', [
             'title' => 'Tambah data keuangan'
         ]);
     }
+
     public function destroy(Keuangan $keuangan)
     {
         Keuangan::destroy($keuangan->id);
@@ -85,7 +105,8 @@ class KeuanganController extends Controller
         ]);
     }
 
-    public function update(Keuangan $keuangan,Request $request) {
+    public function update(Keuangan $keuangan, Request $request)
+    {
         $validatedData = $request->validate([
             'value' => 'required',
             'description' => 'required',
@@ -95,6 +116,4 @@ class KeuanganController extends Controller
 
         return redirect('/keuangan')->with('success', 'Data berhasil ditambahkan');
     }
-
-   
 }

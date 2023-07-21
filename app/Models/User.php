@@ -11,6 +11,7 @@ use App\Models\Keuangan;
 
 class User extends Authenticatable
 {
+    protected $guarded = [];
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -18,24 +19,20 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    //protected $fillable = [
-      //  'username',
-        //'password',
-        //'role'
+    // protected $fillable = [
+    //  'username',
+    // 'password',
+    // 'role'
     // ];
-    protected $guarded = ['id'];
-
+   
     /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
 
-    public function keuangan() {
+    public function keuangan()
+    {
         return $this->hasMany(Keuangan::class);
     }
 }
