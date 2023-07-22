@@ -26,7 +26,7 @@
           <th scope="col">No</th>
           <th scope="col">Nama</th>
           <th scope="col">Tanggal Lahir</th>
-          <th scope="col">Gender</th>
+          <th scope="col">Jenis Kelamin</th>
           <th scope="col">Komisi</th>
           <th scope="col">Kepel</th>
           @can('admin')

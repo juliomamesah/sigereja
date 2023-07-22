@@ -28,7 +28,7 @@
           @enderror
         </div>
         <div class="mb-3">
-          <label for="gender" class="form-label">Tanggal Lahir</label>
+          <label for="gender" class="form-label">Jenis Kelamin</label>
           <input type="text" class="form-control @error('gender') is-invalid @enderror" id="gender" name="gender" required value="{{ old('gender', $jemaat->gender) }}">
           @error('gender')
           <div class="invalid-feedback">
